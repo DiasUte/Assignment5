@@ -1,7 +1,11 @@
 package entities;
 
+// Manager is subclass of Employee and implements from INonProgrammer
 public class Manager extends Employee implements repositories.INonProgrammer  {
     private int salary = 6500;
+    // Salary for all manager
+
+    //Constructor 1
     public Manager(String name, int age, String experience, String department){
         super();
         super.setName(name);
@@ -21,6 +25,8 @@ public class Manager extends Employee implements repositories.INonProgrammer  {
     public String getSalary(){
         return "He get salary "+gettingSalary()+"$ permonth.";
     }
+
+   // Show information about employee ( manager )
     public void ManagerInfo(){
         System.out.println(work());
         System.out.println(getSalary());

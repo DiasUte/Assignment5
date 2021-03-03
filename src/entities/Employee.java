@@ -2,13 +2,21 @@ package entities;
 
 public class Employee {
     private int id;
+    // id of Employee
     private String name;
+    // Name of employee
     private int age;
+    // age of employee
     private String job_title;
+    // job title, like CEO, developer and etc
     private String experience;
+    // Experience, fortam 2y 6m
     private String department;
+    // Department where employee works
     private int project_id;
+    // Id of the project where employee works
 
+    // CONSTRUCTOR 1
     public Employee(int id,String name, int age, String job_title, String experience,String department, int project_id) {
         setId(id);
         setName(name);
@@ -18,6 +26,8 @@ public class Employee {
         setDepartment(department);
         setProject_id(project_id);
     }
+
+    // CONSTRUCTOR 2
     public Employee(int id,String name, int age, String job_title, String experience,String department) {
         setId(id);
         setName(name);
@@ -26,9 +36,13 @@ public class Employee {
         setExperience(experience);
         setDepartment(department);
     }
+
+    // CONSTRUCTOR 3
     public Employee(String job_title) {
         setJob_title(job_title);
     }
+
+    // CONSTRUCTOR 4
     public Employee(String name, int age, String job_title, String experience,String department, int project_id) {
         setName(name);
         setAge(age);
@@ -37,6 +51,8 @@ public class Employee {
         setDepartment(department);
         setProject_id(project_id);
     }
+
+    // CONSTRUCTOR 5( Empty )
     public Employee (){}
 
     public int getProject_id() {
@@ -96,10 +112,12 @@ public class Employee {
         this.job_title = job_title;
     }
 
+    // This override returns all the data of  employee
     @Override
     public String toString() {
         return id+" "+" "+name+" "+" "+age+" "+job_title+" "+experience+" "+department+"\n";
     }
+    // This string return all, without project_id
     public String toEmp() {return id+","+name+","+age+","+job_title+","+experience+","+department;}
 
 }

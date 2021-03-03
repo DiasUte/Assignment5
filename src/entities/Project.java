@@ -2,15 +2,25 @@ package entities;
 
 public class Project {
     private int id;
-    private String name;
-    private int quantity;
-    private double budget;
-    private String description;
 
+    // id of the project, also project_id of employee
+
+    private String name;
+    // Name of project
+    private int quantity;
+    // The amount of participants
+    private double budget;
+    // Budget of the project
+    private String description;
+    // Description of project
+
+    // Empty constructor
     public Project(){}
+    // Constructor which contain only name of project
     public Project(String name) {
         setName(name);
     }
+    // Constructor 3
     public Project (int id,String name, int quantity, double budget, String description) {
         setId(id);
         setName(name);
@@ -60,9 +70,12 @@ public class Project {
     }
 
     @Override
+    // to show all data of project
     public String toString() {
         return id + " " + name+" "+quantity+" "+budget+" "+description;
     }
+
+    // Return name of project
     public String toName(){
         return name;
     }

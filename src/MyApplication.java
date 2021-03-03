@@ -1,7 +1,3 @@
-
-import entities.Developer;
-import entities.Employee;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -15,6 +11,7 @@ public class MyApplication {
     }
 
     public void start(){
+        // OPTIONS TO SELECT IN CONSOLE TO USER
         while(true){
             System.out.println();
             System.out.println("Select option: (1-5)");
@@ -28,11 +25,13 @@ public class MyApplication {
             try {
                 int option = in.nextInt();
                 if(option==1){
+                    // Description of company :D
                     System.out.println("Name of the company: I want 100% for the assignment 5\n" +
                             "CEO,Genius, billionaire, playboy, philanthropist: Dias Utebayev\n" +
                             "The purpose of company: Making games on mobile, desktop platforms by Unity\n " +
                             "The budget of the company: More than 1.000 tenge");
                 }
+                // Selecting options from above, from 1 - 5
                 else if(option == 2){
                     addProject();
                 }
@@ -49,6 +48,7 @@ public class MyApplication {
                     break;
                 }
             } catch (InputMismatchException e) {
+                // Input must be integer
                 System.out.println("Input must be integer");
                 in.nextLine();
             } catch (Exception e){
@@ -59,6 +59,7 @@ public class MyApplication {
         }
     }
 
+    // ADD PROJECT AND ALSO ADD EMPLOYEES
     public void addProject(){
         System.out.print("Project id: ");
         int project_id = in.nextInt();
@@ -71,19 +72,24 @@ public class MyApplication {
         System.out.println("Write a small definition of your project: ");
         String p_def = in.next();
 
+        // Information of project
         System.out.println("Your project: ");
         System.out.println("Name: " + p_name);
         System.out.println("Participants: " + p_amount);
         System.out.println("Budget: " +  p_budget);
         System.out.println("Description: " + p_def);
 
+        // Checking the correctness of data
         System.out.println("Information is correct?");
         String p_check = in.next();
         int k = 0;
         if(p_check.equals("Yes")) {
+            // Sending project to DBMS
             String res = controller.addProject(project_id, p_name, p_amount, p_budget, p_def);
             System.out.println(res);
         while(k != p_amount) {
+            // k ++ until it won't be equal to amount of participant of project
+            // Adding employees to project
             System.out.println("Name of Employee: ");
             String name = in.next();
             System.out.println("Age: ");
@@ -126,17 +132,22 @@ public class MyApplication {
             System.out.println("Experience: ( 2y 7m ) ");
             String experience = in.next();
             k++;
+            // SENDING EMPLOYEE TO DBMS
             String response = controller.addEmployee(name, age, job_title, experience, department, project_id);
             System.out.println(response);
         }
         }
         k = 0;
     }
+
+    // Showing all projects method
     public void showAllProjects(){
         System.out.println("All projects of the company:");
         String responce = controller.showAllProject();
         System.out.println(responce);
     }
+
+    // Show employees of the specific project
     public void showEmployees(){
         System.out.print("Write the id of the project, to show who works to it: ");
         int id = in.nextInt();
@@ -145,6 +156,8 @@ public class MyApplication {
         String responce = controller.showEmployees(id);
         System.out.println(responce);
     }
+
+    // Show employee by ID, and information of him
     public void showEmp(){
         System.out.println("ID of employee: ");
         int id = in.nextInt();

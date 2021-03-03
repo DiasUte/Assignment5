@@ -7,14 +7,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+// ProjectRep implements methods from IProjectRep
 public class ProjectRep implements IProjectRep {
     private final data.IDB db;
     public ProjectRep(data.IDB db) {
         this.db = db;
     }
 
+
+    // This method adding Project to DBMS
     @Override
     public boolean addProject(Project pro) {
+        // Connection to DBMS
         Connection con = null;
         Statement statement = null;
         try {
@@ -37,6 +41,7 @@ public class ProjectRep implements IProjectRep {
         return true;
     }
 
+    // This method shows projects from DBMS
     @Override
     public List<Project> showAllProjects() {
         Scanner in = new Scanner(System.in);
@@ -44,6 +49,7 @@ public class ProjectRep implements IProjectRep {
         ResultSet rs = null;
         Connection con = null;
         try {
+            //Connection to DBMS
             con = db.getConnection();
             statement = con.createStatement();
             rs = statement.executeQuery("SELECT * FROM project");
@@ -67,6 +73,8 @@ public class ProjectRep implements IProjectRep {
         }
         return null;
     }
+
+    // Method to show one project by ID
     @Override
     public Project showOneProject(int id) {
         Scanner in = new Scanner(System.in);
@@ -74,8 +82,10 @@ public class ProjectRep implements IProjectRep {
         ResultSet rs = null;
         Connection con = null;
         try {
+            // Connection to DBMS
             con = db.getConnection();
             statement = con.createStatement();
+            // SQL Query
             rs = statement.executeQuery("SELECT name FROM project where id =" + id);
             while (rs.next()) {
                 Project project = new Project(rs.getString("name"));

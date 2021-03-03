@@ -1,15 +1,12 @@
 package entities;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 
+// Developer is subclass of Employee and implements from IProgrammer
 public class Developer extends Employee implements repositories.IProgrammer {
     private int Salary = 6000;
-    //private String level;
+    //Salary of Developer;
 
+    // CONSTRUCTOR 1
     public Developer(String name, int age, String experience, String department) {
         super();
         super.setName(name);
@@ -17,6 +14,8 @@ public class Developer extends Employee implements repositories.IProgrammer {
         super.setExperience(experience);
         super.setDepartment(department);
     }
+
+    // CONSTRUCTOR 2
     public Developer() {}
 
     public int gettingSalary() {
@@ -41,6 +40,7 @@ public class Developer extends Employee implements repositories.IProgrammer {
     }
 
 
+    // Information about employee
     public void BackendInfo() {
         System.out.println(work());
         System.out.print(programs());
